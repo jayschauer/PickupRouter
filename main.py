@@ -114,6 +114,10 @@ def get_solution(addresses, depart_time, start, end):
 
 if __name__ == '__main__':
     # Inputs to the program are addresses, leave/return time, and the start/end indices
+    # addresses is an array of strings complying with google distance matrix api format
+    # leave and return time are datetime objects that specify the departure time. Must be in the future
+    # start/end index specify which location in addresses the route should start and end
+    # TODO: add command line args for all this. For now this is fine though
     pprint.pprint(inputs.addresses)
     # Print solution on console.
     print('Solution on the way there:')
