@@ -8,7 +8,7 @@ from ortools.constraint_solver import routing_enums_pb2
 from ortools.constraint_solver import pywrapcp
 
 import secrets
-import locations
+import inputs
 
 
 def get_departure_time(hour, minute):
@@ -113,16 +113,10 @@ def get_solution(addresses, depart_time, start, end):
 
 
 if __name__ == '__main__':
-    # Define our inputs - addresses, start, end, and departure times
-    addresses = [locations.start] + locations.pickups + [locations.end]
-    pprint.pprint(addresses)
-    start_index = 0
-    end_index = len(addresses) - 1
-    leave_time = get_departure_time(19, 30)  # 7:30pm
-    return_time = get_departure_time(23, 30)  # 11:30pm
-
+    # Inputs to the program are addresses, leave/return time, and the start/end indices
+    pprint.pprint(inputs.addresses)
     # Print solution on console.
     print('Solution on the way there:')
-    get_solution(addresses, leave_time, start_index, end_index)
+    get_solution(inputs.addresses, inputs.leave_time, inputs.start_index, inputs.end_index)
     print('Solution on the way back:')
-    get_solution(addresses, return_time, end_index, start_index)
+    get_solution(inputs.addresses, inputs.return_time, inputs.end_index, inputs.start_index)
